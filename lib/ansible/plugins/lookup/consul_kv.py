@@ -96,7 +96,8 @@ class LookupModule(LookupBase):
                 results = consul_api.kv.get(params['key'],
                                             token=params['token'],
                                             index=params['index'],
-                                            recurse=params['recurse'])
+                                            recurse=params['recurse'],
+                                            keys=params['keys'])
                 if results[1]:
                     # responds with a single or list of result maps
                     if isinstance(results[1], list):
@@ -117,7 +118,8 @@ class LookupModule(LookupBase):
             'key': params[0],
             'token': None,
             'recurse': False,
-            'index': None
+            'index': None,
+            'keys': False
         }
 
         # parameters specified?
